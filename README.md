@@ -1,40 +1,36 @@
-# Proyecto de Señales en Python
-
-Este proyecto contiene scripts para generar, graficar y comparar diferentes tipos de señales (continuas y discretas) usando Python y Matplotlib.
-
----
-
-## Contenido
-
-- `tarea_1.py`: Genera y grafica cuatro tipos de señales en forma continua y discreta.
-  - Señal senoidal
-  - Señal exponencial con escalón
-  - Señal triangular
-  - Señal cuadrada
-
-- `tarea_2.py`: Genera y grafica una señal senoidal continua para una frecuencia dada.
-
-- `tarea_3.py`: Compara señales continuas y discretas modificadas con señales de referencia, permitiendo variar amplitud, frecuencia y fase.
-
-- `src/utils/grapher.py`: Funciones para graficar señales continuas, discretas y para comparar señales.
-
-- `main.py`: Script principal para ejecutar cualquiera de las tareas desde línea de comandos.
+- **Tarea 3**: Comparación entre señales continuas y discretas con parámetros variables.
+- **Tarea 4**: Análisis del efecto del número de bits en un DAC — cálculo de niveles, tamaño de paso, resolución porcentual y visualización de la salida analógica para entradas digitales crecientes.
 
 ---
 
 ## Requisitos
 
-- Python 3.7 o superior
-- NumPy
-- SciPy
-- Matplotlib
+- Python 3.x
+- Paquete `matplotlib`
+- Paquete `numpy`
 
-Puedes instalar las dependencias con:
+Instala los requisitos con:
 
 ```bash
-pip install numpy scipy matplotlib
+pip install -r requirements.txt
 
-Uso:
+estructura:
+
++-- main.py
++-- .gitignore
++-- requirements.txt
++-- README.md
++-- src/
+¦   +-- tarea_1.py
+¦   +-- tarea_2.py 
+¦   +-- tarea_3.py 
+¦   +-- tarea_4.py
+¦   +-- utils/
+¦       +-- grapher.py
+
+
+uso:
+
 python main.py tarea_1
 
 python main.py tarea_2 [frecuencia]
@@ -43,3 +39,6 @@ python main.py tarea_2 [frecuencia]
 python main.py tarea_3 [Amplitud] [Frecuencia] [Fase en radianes]
 	Ejemplo:
 	python main.py tarea_3 1 2 0.785
+Tarea 4 (DAC)
+	Ejemplo:
+	

@@ -4,7 +4,8 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
 from tarea_1 import crear_senales
 from tarea_2 import generar_senoidal_continua
-from src.utils.grapher import graficar_senal, plot_compare_signals, plot_compare_signals_discrete
+from src.utils.grapher import graficar_senal, plot_compare_signals, plot_compare_signals_discrete, discrete_plotter_dac
+from src.tarea_4 import dac_output
 import numpy as np
 
 def generar_senales_tarea_3(A, f, phi):
@@ -27,7 +28,7 @@ def generar_senales_tarea_3(A, f, phi):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Uso: python main.py [tarea_1 | tarea_2 | tarea_3] [parámetros]")
+        print("Uso: python main.py [tarea_1 | tarea_2 | tarea_3 | tarea_4] [parámetros]")
         sys.exit(1)
 
     tarea = sys.argv[1]
@@ -71,5 +72,26 @@ if __name__ == "__main__":
         # Graficar señales discretas comparativas
         plot_compare_signals_discrete(n, senal_disc, senal_ref_disc, Ts, A, f, phi)
 
+    elif tarea == "tarea_4":
+        if len(sys.argv) < 3:
+            print("Uso correcto: python main.py tarea_4 [n_bits]")
+            sys.exit(1)
+        try:
+            n_bits = int(sys.argv[2])
+            if n_bits <= 0:
+                raise ValueError("Número de bits debe ser positivo")
+        except ValueError as e:
+            print(f"Error: {e}")
+            sys.exit(1)
+
+        entrada, salida, niveles, paso, resolucion = dac_output(n_bits)
+
+        print(f"Cantidad de niveles: {niveles}")
+        print(f"Tamaño del paso: {paso:.6f} V")
+        print(f"Resolución porcentual: {resolucion:.4f} %")
+
+        discrete_plotter_dac(entrada, salida, titulo=f"Salida DAC {n_bits}-bits")
+
     else:
-        print("Tarea no reconocida. Usa 'tarea_1', 'tarea_2' o 'tarea_3'.")
+        print("Tarea no reconocida. Usa 'tarea_1', 'tarea_2', 'tarea_3' o 'tarea_4'.")
+

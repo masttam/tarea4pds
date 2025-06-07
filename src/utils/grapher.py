@@ -68,3 +68,23 @@ def plot_compare_signals_discrete(n, signal, ref_signal, Ts, A, f, phi, titulo="
     plt.tight_layout()
     plt.show()
     plt.close()
+
+
+def discrete_plotter_dac(entrada_digital, salida_analogica, titulo=""):
+    """
+    Grafica la salida analógica de un DAC frente a su entrada digital.
+
+    Parámetros:
+        entrada_digital (array-like): valores digitales de entrada (0 a 2^N-1)
+        salida_analogica (array-like): valores analógicos correspondientes (voltaje)
+        titulo (str): título opcional para la gráfica
+    """
+    plt.figure(figsize=(10, 4))
+    plt.stem(entrada_digital, salida_analogica, linefmt='b-', markerfmt='bo', basefmt='k-')
+    plt.title(titulo if titulo else "Salida analógica del DAC")
+    plt.xlabel("Entrada digital (decimal)")
+    plt.ylabel("Salida analógica (V)")
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+    plt.close()
