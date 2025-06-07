@@ -9,7 +9,6 @@ def graficar_senal(tiempo_continuo, senal_continua, tiempo_discreto=None, senal_
     if tiempo_discreto is not None and senal_discreta is not None:
         plt.stem(tiempo_discreto, senal_discreta, linefmt='r-', markerfmt='ro', basefmt='r-', label='Señal discreta')
 
-
     plt.title(titulo)
     plt.xlabel("Tiempo (s)")
     plt.ylabel("Amplitud")
@@ -17,6 +16,7 @@ def graficar_senal(tiempo_continuo, senal_continua, tiempo_discreto=None, senal_
     plt.grid(True)
     plt.tight_layout()
     plt.show()
+    plt.close()
 
 
 def continuous_plotter(t, x, titulo=""):
@@ -28,3 +28,43 @@ def continuous_plotter(t, x, titulo=""):
     plt.grid(True)
     plt.tight_layout()
     plt.show()
+    plt.close()
+
+
+def plot_compare_signals(t, signal, ref_signal, A, f, phi, titulo=""):
+    """
+    Grafica dos señales continuas para comparar:
+    signal: señal modificada (parámetros variables)
+    ref_signal: señal de referencia fija
+    """
+    plt.figure(figsize=(10, 4))
+    plt.plot(t, ref_signal, label="Señal Referencia (A=1, f=1Hz, ϕ=0)", color='gray', linestyle='--')
+    plt.plot(t, signal, label=f"Señal Modificada (A={A}, f={f}Hz, ϕ={phi:.2f} rad)", color='blue')
+    plt.title(titulo if titulo else "Comparación de señales continuas")
+    plt.xlabel("Tiempo (s)")
+    plt.ylabel("Amplitud")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+    plt.close()
+
+
+def plot_compare_signals_discrete(n, signal, ref_signal, Ts, A, f, phi, titulo=""):
+    """
+    Grafica dos señales discretas para comparar:
+    n: índice de muestra
+    signal: señal modificada
+    ref_signal: señal de referencia
+    """
+    plt.figure(figsize=(10, 4))
+    plt.stem(n*Ts, ref_signal, linefmt='gray', markerfmt='o', basefmt='k-', label="Señal Referencia (A=1, f=1Hz, ϕ=0)")
+    plt.stem(n*Ts, signal, linefmt='b-', markerfmt='bo', basefmt='k-', label=f"Señal Modificada (A={A}, f={f}Hz, ϕ={phi:.2f} rad)")
+    plt.title(titulo if titulo else "Comparación de señales discretas")
+    plt.xlabel("Tiempo (s)")
+    plt.ylabel("Amplitud")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+    plt.close()

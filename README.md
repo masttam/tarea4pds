@@ -1,27 +1,45 @@
-# Graficación de Señales Continuas y Discretas
+# Proyecto de Señales en Python
 
-## Descripción
-Este proyecto en Python está diseñado para generar y graficar señales continuas y discretas, enfocándose en el estudio de señales senoidales y otras formas como señales exponenciales, triangulares y cuadradas. Permite visualizar cómo la frecuencia afecta una señal senoidal continua.
+Este proyecto contiene scripts para generar, graficar y comparar diferentes tipos de señales (continuas y discretas) usando Python y Matplotlib.
 
+---
 
-## Estructura del Proyecto
-+-- main.py # Script principal para ejecutar tareas
-+-- requirements.txt # Dependencias del proyecto
-+-- README.md # Este archivo
-+-- src/
-¦ +-- tarea_1.py # Generación de señales continuas y discretas variadas
-¦ +-- tarea_2.py # Generación de señal senoidal continua con frecuencia variable
-¦ +-- utils/
-¦ +-- grapher.py # Funciones para graficar señales con matplotlib
+## Contenido
+
+- `tarea_1.py`: Genera y grafica cuatro tipos de señales en forma continua y discreta.
+  - Señal senoidal
+  - Señal exponencial con escalón
+  - Señal triangular
+  - Señal cuadrada
+
+- `tarea_2.py`: Genera y grafica una señal senoidal continua para una frecuencia dada.
+
+- `tarea_3.py`: Compara señales continuas y discretas modificadas con señales de referencia, permitiendo variar amplitud, frecuencia y fase.
+
+- `src/utils/grapher.py`: Funciones para graficar señales continuas, discretas y para comparar señales.
+
+- `main.py`: Script principal para ejecutar cualquiera de las tareas desde línea de comandos.
+
+---
 
 ## Requisitos
 
-- Python 3.x
-- numpy
-- scipy
-- matplotlib
+- Python 3.7 o superior
+- NumPy
+- SciPy
+- Matplotlib
 
-Puedes instalar las dependencias usando:
+Puedes instalar las dependencias con:
 
 ```bash
-pip install -r requirements.txt
+pip install numpy scipy matplotlib
+
+Uso:
+python main.py tarea_1
+
+python main.py tarea_2 [frecuencia]
+	Ejemplo:
+	python main.py tarea_2 5
+python main.py tarea_3 [Amplitud] [Frecuencia] [Fase en radianes]
+	Ejemplo:
+	python main.py tarea_3 1 2 0.785
